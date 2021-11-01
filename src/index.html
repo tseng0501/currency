@@ -4,9 +4,52 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/src/css/reference/bootstrap/bootstrap-4.2.1.min.css">
+    <link rel="stylesheet" href="/src/css/reference/bootstrap/bootstrap-toggle.min.css">
+    <link rel="stylesheet" href="/src/css/reference/fontawesome-5.8.1/css/all.min.css">
+    <link rel="stylesheet" href="/src/css/reference/devExtreme/dx.common.css">
+    <link rel="stylesheet" href="/src/css/reference/devExtreme/dx.light.css">
+    <link rel="stylesheet" href="/src/css/all.css">
     <title>虛擬貨幣記帳表</title>
 </head>
 <body>
     
+    <header id="Header">
+        <nav class="navbar navbar-expand-md navbar-light bg-light">
+            <a class="navbar-brand title-name" href="#"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#NavToolbar"
+                aria-controls="NavToolbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="nav-item-right collapse navbar-collapse" id="NavToolbar">
+                <div id="Menu"></div>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item__user">
+                        <div class="btn__user"><i class="far fa-user user btn-success"></i></div>
+                        <ul class="navbar-nav__meun d-none user_meun"></ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <section id="Content">
+
+    </section>
+
+    <script src="/src/js/reference/jquery-3.4.0.min.js"></script>
+    <script src="/src/js/reference/moment/moment-2.24.0.js"></script>
+    <script src="/src/js/reference/moment/moment-2.24.0-zh-tw.js"></script>
+    <script src="/src/js/reference/popper-1.15.0.min.js"></script>
+    <script src="/src/js/reference/bootstrap/bootstrap-4.2.1.min.js"></script>
+    <script src="/src/js/reference/bootstrap/bootstrap-toggle.min.js"></script>
+    <script src="/src/js/reference/bootstrap/tempusdominus-bootstrap-4.js"></script>
+    <script src="/src/js/reference/devExtreme/dx.all.js"></script>
+    <script src="/src/js/reference/devExtreme/dx.aspnet.data.js"></script>
+    <script src="/src/js/reference/knockout-latest.js"></script>
+
+    <script type="module" src="/src/js/main.js"></script>
+    <script type="module" src="/src/js/login.js"></script>
+    <script type="module" src="/src/js/pageDrawer.js"></script>
 </body>
 </html>

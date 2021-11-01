@@ -1,0 +1,16 @@
+[
+    {
+        "id": "1",
+        "text": "買賣管理",
+        "mode": "SaleManagement",
+        "icon": "fas fa-table",
+        "enable": true
+    },
+    {
+        "id": "2",
+        "text": "歷史查詢",
+        "mode": "HistoryQuery",
+        "icon": "fas fa-search",
+        "enable": true
+    }
+]

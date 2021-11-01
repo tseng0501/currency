@@ -1,0 +1,8 @@
+{
+    "server": {
+        "ip": "127.0.0.1",
+        "port": 8300
+    },
+    "projectTitle": "虛擬貨幣記帳本",
+    "ifRemoveCheckToken": true
+}
