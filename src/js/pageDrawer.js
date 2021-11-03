@@ -3,7 +3,7 @@ import LocalStorage from '../js/tool/localStorage.js';
 
 Page.pageDrawer = {};
 Page.pageDrawer.oldId = null
-Page.pageDrawer.draw = function (r,user) {
+Page.pageDrawer.draw = function (r, user) {
     let data = r
     let config = new LocalStorage('config');
     config = config.get();
@@ -43,13 +43,19 @@ Page.pageDrawer.draw = function (r,user) {
         onItemClick: function (data) {
             Page.pageDrawer.resetMainContentHtml();
             const mode = data.itemData.mode;
-           
+
             switch (mode) {
-                case 'SaleManagement':
-                    Page.saleManagement.draw(mode,config);
+                case 'CurrencyManagement':
+                    Page.currencyManagement.draw(mode, config);
+                    break;
+                case 'SpotGoodsHistory':
+                    Page.spotGoodsHistory.draw(mode, config);
+                    break;
+                case 'ContractHistory':
+                    Page.contractHistory.draw(mode, config);
                     break;
                 case 'HistoryQuery':
-                    Page.historyQuery.draw(mode,config);
+                    Page.historyQuery.draw(mode, config);
                     break;
                 default:
             }
@@ -57,11 +63,12 @@ Page.pageDrawer.draw = function (r,user) {
         }
     }).dxMenu("instance");
     let firstMode = newData[0].mode;
-    if(user =="view"){
-        Page.saleManagement.draw("SaleManagement",config)
+    console.log(firstMode)
+    if (user == "view") {
+        Page.currencyManagement.draw("CurrencyManagement", config)
 
-    }else{
-        Page.saleManagement.draw(firstMode,config)
+    } else {
+        Page.currencyManagement.draw(firstMode, config)
     }
 }
 Page.pageDrawer.resetMainContentHtml = function () {

@@ -16,7 +16,7 @@ $(function () {
             const ifRemoveCheckToken = config.ifRemoveCheckToken === undefined ? false : config.ifRemoveCheckToken
 
             ls.set(JSON.stringify({
-                server: 'http://' + ip + port + '/sanho',
+                server: 'http://' + ip + port,
                 ifRemoveCheckToken_ajax: ifRemoveCheckToken,
 
             }));

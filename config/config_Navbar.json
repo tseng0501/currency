@@ -1,16 +1,44 @@
 [
     {
         "id": "1",
-        "text": "買賣管理",
-        "mode": "SaleManagement",
-        "icon": "fas fa-table",
+        "text": "貨幣管理",
+        "mode": "CurrencyManagement",
+        "icon": "fas fa-coins",
         "enable": true
     },
     {
         "id": "2",
+        "text": "現貨歷史",
+        "mode": "SpotGoodsHistory",
+        "icon": "fas fa-dollar-sign",
+        "enable": true
+    },
+    {
+        "id": "3",
+        "text": "合約歷史",
+        "mode": "ContractHistory",
+        "icon": "fas fa-table",
+        "enable": true
+    },
+    {
+        "id": "4",
         "text": "歷史查詢",
         "mode": "HistoryQuery",
         "icon": "fas fa-search",
+        "enable": true
+    },
+    {
+        "id": "5",
+        "text": "持有現貨",
+        "mode": "HoldMoney",
+        "icon": "fas fa-hand-holding-usd",
+        "enable": true
+    },
+    {
+        "id": "6",
+        "text": "我的資金",
+        "mode": "MyMoney",
+        "icon": "fas fa-wallet",
         "enable": true
     }
 ]
