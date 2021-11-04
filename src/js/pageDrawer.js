@@ -48,11 +48,11 @@ Page.pageDrawer.draw = function (r, user) {
                 case 'CurrencyManagement':
                     Page.currencyManagement.draw(mode, config);
                     break;
-                case 'SpotGoodsHistory':
-                    Page.spotGoodsHistory.draw(mode, config);
+                case 'SpotGoodsManagement':
+                    Page.spotGoodsManagement.draw(mode, config);
                     break;
-                case 'ContractHistory':
-                    Page.contractHistory.draw(mode, config);
+                case 'ContractManagement':
+                    Page.contractManagement.draw(mode, config);
                     break;
                 case 'HistoryQuery':
                     Page.historyQuery.draw(mode, config);

@@ -1,22 +1,22 @@
 [
     {
         "id": "1",
-        "text": "貨幣管理",
+        "text": "添加幣種",
         "mode": "CurrencyManagement",
         "icon": "fas fa-coins",
         "enable": true
     },
     {
         "id": "2",
-        "text": "現貨歷史",
-        "mode": "SpotGoodsHistory",
+        "text": "現貨管理",
+        "mode": "SpotGoodsManagement",
         "icon": "fas fa-dollar-sign",
         "enable": true
     },
     {
         "id": "3",
-        "text": "合約歷史",
-        "mode": "ContractHistory",
+        "text": "合約管理",
+        "mode": "ContractManagement",
         "icon": "fas fa-table",
         "enable": true
     },
@@ -29,7 +29,7 @@
     },
     {
         "id": "5",
-        "text": "持有現貨",
+        "text": "持有資產",
         "mode": "HoldMoney",
         "icon": "fas fa-hand-holding-usd",
         "enable": true

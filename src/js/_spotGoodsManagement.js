@@ -1,17 +1,17 @@
 import Page from './page.js'
 import { DrawDataGrid, DxDataGridOptions } from './tool/dx/dxDataGrid.js';
 import SendRequest from './tool/dx/sendRequest.js';
-import ContractColumns from './json/contractHistory_data.js';
-import {MoreAllShort} from './json/buyAllSell.js';
+import SpotGoodsColumns from './json/spotGoodsManagement_data.js';
+import {BuyAllSell} from './json/buyAllSell.js';
 
-Page.contractHistory = {};
-Page.contractHistory.draw = function (mode, config) {
-    Page.contractHistory.drawHTML(mode)
-    Page.contractHistory.setColumns(config)
-    Page.contractHistory.drawDataGrid(config)
+Page.spotGoodsManagement = {};
+Page.spotGoodsManagement.draw = function (mode, config) {
+    Page.spotGoodsManagement.drawHTML(mode)
+    Page.spotGoodsManagement.setColumns(config)
+    Page.spotGoodsManagement.drawDataGrid(config)
 }
 
-Page.contractHistory.drawHTML = function (mode) {
+Page.spotGoodsManagement.drawHTML = function (mode) {
     const html = `
     <div id="${mode}">
         <div id="gridContainer"></div>
@@ -19,10 +19,10 @@ Page.contractHistory.drawHTML = function (mode) {
     Page.$panel.html(html);
 }
 
-Page.contractHistory.setColumns = function (config) {
+Page.spotGoodsManagement.setColumns = function (config) {
     this._columns = []
-    for (let i = 0; i < ContractColumns.length; i++) {
-        const element = ContractColumns[i];
+    for (let i = 0; i < SpotGoodsColumns.length; i++) {
+        const element = SpotGoodsColumns[i];
         if (element.allowEditing == false) {
             this._columns.push({
                 dataField: element.id,
@@ -31,19 +31,19 @@ Page.contractHistory.setColumns = function (config) {
                 dataType: element.dataType,
                 allowEditing: element.allowEditing
             });
-        } else if (element.id == "Type") {
+        } else if (element.id == "Bargain") {
             this._columns.push({
                 dataField: element.id,
                 caption: element.name,
                 alignment: 'center',
                 dataType: element.dataType,
                 lookup: {
-                    dataSource: MoreAllShort,
+                    dataSource: BuyAllSell,
                     displayExpr: "value",
                     valueExpr: "id"
                 },
                 cellTemplate: function (element, info) {
-                    if (info.text === '做空') {
+                    if (info.text === '買') {
                         element.append("<div>" + info.text + "</div>")
                             .css("color", "red");
                     } else {
@@ -80,28 +80,28 @@ Page.contractHistory.setColumns = function (config) {
         }
     }
 }
-Page.contractHistory.drawDataGrid = function (config) {
+Page.spotGoodsManagement.drawDataGrid = function (config) {
     const options = {
         dataSource: new DevExpress.data.CustomStore({
             key: "ID",
             load: function () {
-                return SendRequest(config.server + "/getData/contractHistory");
+                return SendRequest(config.server + "/getData/spotGoodsManagement");
             },
             insert: function (values) {
-                return SendRequest(config.server + "/setData/contractHistory", "POST", {
+                return SendRequest(config.server + "/setData/spotGoodsManagement", "POST", {
                     data: values,
                     mode: "insertOrder"
                 });
             },
             update: function (key, values) {
-                return SendRequest(config.server + "/setData/contractHistory", "POST", {
+                return SendRequest(config.server + "/setData/spotGoodsManagement", "POST", {
                     key: key,
                     data: values,
                     mode: "updateOrder"
                 });
             },
             remove: function (key) {
-                return SendRequest(config.server + "/setData/contractHistory", "POST", {
+                return SendRequest(config.server + "/setData/spotGoodsManagement", "POST", {
                     key: key,
                     mode: "deleteOrder"
                 });
