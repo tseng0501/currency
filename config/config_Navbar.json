@@ -17,7 +17,7 @@
         "id": "3",
         "text": "合約管理",
         "mode": "ContractManagement",
-        "icon": "fas fa-table",
+        "icon": "fas fa-handshake",
         "enable": true
     },
     {

@@ -2,7 +2,7 @@ import Page from './page.js'
 import { DrawDataGrid, DxDataGridOptions } from './tool/dx/dxDataGrid.js';
 import SendRequest from './tool/dx/sendRequest.js';
 import ContractColumns from './json/contractManagement_data.js';
-import {MoreAllShort} from './json/buyAllSell.js';
+import { MoreAllShort ,BuyAllSell} from './json/buyAllSell.js';
 
 Page.contractManagement = {};
 Page.contractManagement.draw = function (mode, config) {
@@ -31,7 +31,8 @@ Page.contractManagement.setColumns = function (config) {
                 dataType: element.dataType,
                 allowEditing: element.allowEditing
             });
-        } else if (element.id == "Type") {
+        }
+        else if (element.id == "Type") {
             this._columns.push({
                 dataField: element.id,
                 caption: element.name,
@@ -52,7 +53,29 @@ Page.contractManagement.setColumns = function (config) {
                     }
                 }
             });
-        } 
+        }
+        else if (element.id == "Bargain") {
+            this._columns.push({
+                dataField: element.id,
+                caption: element.name,
+                alignment: 'center',
+                dataType: element.dataType,
+                lookup: {
+                    dataSource: BuyAllSell,
+                    displayExpr: "value",
+                    valueExpr: "id"
+                },
+                cellTemplate: function (element, info) {
+                    if (info.text === '買') {
+                        element.append("<div>" + info.text + "</div>")
+                            .css("color", "red");
+                    } else {
+                        element.append("<div>" + info.text + "</div>")
+                            .css("color", "green");
+                    }
+                }
+            });
+        }
         else if (element.id === 'CurrencyID') {
             this._columns.push({
                 dataField: element.id,

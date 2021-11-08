@@ -57,6 +57,9 @@ Page.pageDrawer.draw = function (r, user) {
                 case 'HistoryQuery':
                     Page.historyQuery.draw(mode, config);
                     break;
+                case 'HoldMoney':
+                    Page.holdMoney.draw(mode, config);
+                    break;
                 default:
             }
             Page.pageDrawer.oldId = data.itemData.mode

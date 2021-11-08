@@ -1,0 +1,32 @@
+#HistoryQuery{
+    #HistoryQueryFilter{
+        padding: 0.5rem;
+        .input-group{
+            display: flex;
+            justify-content: space-between;
+            margin: .5rem 0 ;
+            .input-group-textselect{
+                margin: auto 0 auto .5rem;
+            }
+        }
+        .inventoryblock{
+            text-align: center;
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    #HistoryQuery{
+        #HistoryQueryFilter{
+            width: 100%;
+            display: flex;
+            .inventoryblock{
+                margin: auto;
+                margin-left: 1rem;
+            }
+        }
+        #HistoryQueryPanel{
+            margin-top: 1.5rem;
+        }
+    }
+}

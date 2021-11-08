@@ -5,6 +5,9 @@ const BuyAllSell = [
     }, {
         "id": 1,
         "value": "賣"
+    }, {
+        "id": 2,
+        "value": " "
     }
 ]
 
@@ -15,6 +18,9 @@ const MoreAllShort = [
     }, {
         "id": 1,
         "value": "做空"
+    }, {
+        "id": 2,
+        "value": " "
     }
 ]
-export {BuyAllSell,MoreAllShort}
+export { BuyAllSell, MoreAllShort }

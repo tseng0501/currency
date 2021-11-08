@@ -1,8 +1,26 @@
-const ContractColumns = [
+const HistoryDropDown = [
+    {
+        "id": 1,
+        "value": "貨幣名稱",
+        "name": "CurrencyID",
+    },
+    {
+        "id": 2,
+        "value": "買/賣",
+        "name": "BuyAllSellStatus",
+    },
+    {
+        "id": 3,
+        "value": "做多/做空",
+        "name": "MoreAllShortStatus",
+    }
+];
+
+const HistoryQueryColumns = [
     {
         "id": "ID",
+        "dataType":'string',
         "name": "No",
-        "allowEditing": false
     },
     {
         "id": "Date",
@@ -45,5 +63,4 @@ const ContractColumns = [
         "name": "備註",
     }
 ];
-
-export default ContractColumns
+export { HistoryDropDown, HistoryQueryColumns }

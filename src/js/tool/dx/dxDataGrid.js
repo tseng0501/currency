@@ -65,12 +65,21 @@ class DxDataGridOptions {
      * @param {String} options.summary.totalItems.column        指定為匯總項目提供數據的列
      * @param {String} options.summary.totalItems.alignment     指定匯總項的對齊方式
      * @param {String} options.summary.totalItems.summaryType   指定如何聚合總計匯總項的數據
-     * 
+     * @param {Object} options.export                           列印
+     * @param {Boolean} options.export.enabled                  是否列印
+     * @param {Function} options.onExporting                    輸出exlce
+     * @param {Object} options.columnChooser                    配置列選擇器
+     * @param {Boolean} options.columnChooser.enabled           是否可以打開列選擇器
+     * @param {String} options.columnChooser.mode               如何使用列選擇器管理列   'dragAndDrop' | 'select'
+     * @param {String} options.columnChooser.title              指定列選擇器的標題
+     *                    
+     *                  
      */
     constructor(options = {}) {
         this.columns = (options.columns || []);
         this.dataSource = (options.dataSource || []);
         this.onToolbarPreparing = (options.onToolbarPreparing || []);
+        this.onExporting = (options.onExporting || []);
 
 
         options.searchPanel = (options.searchPanel || {});
@@ -164,7 +173,16 @@ class DxDataGridOptions {
                 summaryType: (options.summary.totalItems.summaryType || 'count'),
             }],
         }
-
+        options.export = (options.export || {});
+        this.export = {
+            enabled: (options.export.enabled || true),
+        }
+        options.columnChooser = (options.columnChooser || {});
+        this.columnChooser = {
+            enabled: (options.columnChooser.enabled || true),
+            mode: (options.columnChooser.mode || 'select'),
+            title: (options.columnChooser.title || '顯示欄位'),
+        }
     }
 }
 
@@ -307,6 +325,14 @@ function DrawDataGrid($panel, options) {
                 alignment: options.summary.totalItems.alignment,
                 summaryType: options.summary.totalItems.summaryType,
             }]
+        },
+        export:{
+            enabled:options.export.enabled
+        },
+        columnChooser:{
+            enabled:options.columnChooser.enabled,
+            mode:options.columnChooser.mode,
+            title:options.columnChooser.title,
         }
     });
     return $panel;
