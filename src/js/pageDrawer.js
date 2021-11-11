@@ -45,6 +45,9 @@ Page.pageDrawer.draw = function (r, user) {
             const mode = data.itemData.mode;
 
             switch (mode) {
+                case 'AccountManagement':
+                    Page.accountManagement.draw(mode,config);
+                    break;
                 case 'CurrencyManagement':
                     Page.currencyManagement.draw(mode, config);
                     break;
@@ -69,12 +72,11 @@ Page.pageDrawer.draw = function (r, user) {
         }
     }).dxMenu("instance");
     let firstMode = newData[0].mode;
-    console.log(firstMode)
     if (user == "view") {
         Page.spotGoodsManagement.draw("SpotGoodsManagement", config)
 
     } else {
-        Page.funds.draw(firstMode, config)
+        Page.accountManagement.draw(firstMode,config)
     }
 }
 Page.pageDrawer.resetMainContentHtml = function () {
