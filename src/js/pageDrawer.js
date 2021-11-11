@@ -71,7 +71,7 @@ Page.pageDrawer.draw = function (r, user) {
     let firstMode = newData[0].mode;
     console.log(firstMode)
     if (user == "view") {
-        Page.funds.draw("Funds", config)
+        Page.spotGoodsManagement.draw("SpotGoodsManagement", config)
 
     } else {
         Page.funds.draw(firstMode, config)

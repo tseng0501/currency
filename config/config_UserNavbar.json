@@ -1,12 +1,5 @@
 [
     {
-        "id": "1",
-        "text": "添加幣種",
-        "mode": "CurrencyManagement",
-        "icon": "fas fa-coins",
-        "enable": true
-    },
-    {
         "id": "2",
         "text": "現貨管理",
         "mode": "SpotGoodsManagement",
