@@ -60,6 +60,9 @@ Page.pageDrawer.draw = function (r, user) {
                 case 'HoldMoney':
                     Page.holdMoney.draw(mode, config);
                     break;
+                case 'Funds':
+                    Page.funds.draw(mode, config);
+                    break;
                 default:
             }
             Page.pageDrawer.oldId = data.itemData.mode
@@ -68,10 +71,10 @@ Page.pageDrawer.draw = function (r, user) {
     let firstMode = newData[0].mode;
     console.log(firstMode)
     if (user == "view") {
-        Page.currencyManagement.draw("CurrencyManagement", config)
+        Page.funds.draw("Funds", config)
 
     } else {
-        Page.currencyManagement.draw(firstMode, config)
+        Page.funds.draw(firstMode, config)
     }
 }
 Page.pageDrawer.resetMainContentHtml = function () {

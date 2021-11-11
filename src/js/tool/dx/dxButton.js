@@ -9,16 +9,16 @@ class DxButtonOptions {
     * @param {String}   options.icon             icon
     * @param {String}   options.text             icon
     * @param {Function} options.onClick        按鈕觸發事件
-    * 
-    * 
+    * @param {String} options.width        按鈕觸發事件
     **/
 
     constructor(options = {}) {
         this.stylingMode = (options.stylingMode || 'contained'),
         this.type = (options.type || 'normal'),
-        this.icon = (options.icon || 'search'),
+        this.icon = (options.icon || ' '),
         this.text = (options.text || ''),
         this.onClick = (options.onClick || null);
+        this.width = (options.width || '');
 
     }
 }
@@ -40,6 +40,7 @@ function DrawButton($panel, options) {
         icon :options.icon,
         onClick:options.onClick,
         text:options.text,
+        width:options.width
     })
     return $panel;
 

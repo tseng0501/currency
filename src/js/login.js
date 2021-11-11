@@ -161,6 +161,7 @@ Page.user.login = async function (r) {
 
         ls.set(JSON.stringify({
             token: r.token,
+            id:r.id
         }));
         var config = await Page.user.getUserConfig()
         Page.user.view(config, mode)
@@ -170,6 +171,7 @@ Page.user.login = async function (r) {
     else if (mode === "manager") { //管理員登入權限成功
         ls.set(JSON.stringify({
             token: r.token,
+            id:r.id
         }));
         var config = await Page.user.getConfig()
         Page.user.view(config, mode)

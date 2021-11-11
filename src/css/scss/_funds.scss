@@ -1,0 +1,73 @@
+#FundsFilter {
+    #Total {
+        padding: 1rem;
+        .total_title {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .total_amount {
+            text-align: center;
+            font-size: 1.75rem;
+            font-style: unset;
+        }
+        .total_type {
+            text-align: end;
+            font-size: 1.5rem;
+            font-style: oblique;
+        }
+    }
+    #Wallet{
+        padding: 1rem;
+        display: flex;
+        .input-group{
+            justify-content: center;
+        }
+    }
+    #Account{
+        padding: 1rem;
+        .input-group{
+            margin-bottom: .5rem;
+            justify-content: space-between;
+            .input-group-textselect{
+                font-weight: bold;
+                letter-spacing:5px;
+                margin: auto 0;
+            }
+        }
+    }
+}
+#Funds{
+    padding: 1rem;
+    #Chart{
+        padding: 1rem;
+    }
+    .option{
+        width: 30%;
+        display: flex;
+        .options_text{
+            width: 15%;
+            margin: auto 0;
+        }
+    }
+}
+@media (min-width: 768px) {
+    #FundsFilter {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.75rem 1rem;
+        #Wallet {
+            display: block;
+            margin: auto;
+            .input-group {
+                margin-bottom: 0.5rem;
+            }
+        }
+        #Account{
+            margin: auto;
+        }
+    }
+}
+
+// @media (min-width: 992px) {
+
+// }

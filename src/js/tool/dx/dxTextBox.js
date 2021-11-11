@@ -8,13 +8,17 @@ class DxTextBoxOptions {
     * @param {String}  options.placeholder      預設文字提醒
     * @param {boolean}  options.showClearButton 是否允許有刪除按鈕
     * @param {Function}  options.onValueChanged UI 組件的值更改後執行的函數
+    * @param {boolean}  options.disabled UI 組件的值更改後執行的函數
+    * 
     **/
 
     constructor(options = {}) {
         this.value = (options.value || '');
-        this.placeholder = (options.placeholder || ''),
-        this.showClearButton = (options.showClearButton || true),
+        this.placeholder = (options.placeholder || '');
+        this.showClearButton = (options.showClearButton || true);
         this.onValueChanged = (options.onValueChanged || null);
+        this.disabled = (options.disabled || false);
+
     }
 }
 
@@ -24,16 +28,17 @@ class DxTextBoxOptions {
  * @returns 如果錯誤回傳false
  */
 
- function DrawTextBox($panel, options) {
+function DrawTextBox($panel, options) {
     if ($panel === null) {
         console.log('缺少 $panel.');
         return false;
     }
     $panel.dxTextBox({
         value: options.value,
-        placeholder:options.placeholder,
-        showClearButton:options.searchEnabled,
-        onValueChanged :options.onValueChanged,
+        placeholder: options.placeholder,
+        showClearButton: options.searchEnabled,
+        onValueChanged: options.onValueChanged,
+        disabled: options.disabled
     })
     return $panel;
 }
