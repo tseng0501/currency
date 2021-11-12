@@ -42,6 +42,7 @@ Page.pageDrawer.draw = function (r, user) {
         dataSource: newData,
         onItemClick: function (data) {
             Page.pageDrawer.resetMainContentHtml();
+            Page.pageDrawer.currentPage(data)
             const mode = data.itemData.mode;
 
             switch (mode) {
@@ -81,4 +82,10 @@ Page.pageDrawer.draw = function (r, user) {
 }
 Page.pageDrawer.resetMainContentHtml = function () {
     Page.clear();
+}
+Page.pageDrawer.currentPage = function (data) {
+    //當前頁面
+    data.element.find('.dx-menu-item').css('background-color', 'transparent');  
+    data.itemElement.closest('.dx-menu-item').css('background-color', 'wheat');  
+    data.itemElement.closest('.dx-menu-item').css('border-radius', '.5rem'); 
 }
