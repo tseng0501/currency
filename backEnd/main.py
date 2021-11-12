@@ -234,8 +234,8 @@ async def getData_saleManagement():
             "Number": ran.randint(0,100),
             "Price": ran.randint(0,100),
             "Turnover":ran.randint(0,100),
-            "Bargain":ran.randint(0,2),
-            "Type": ran.randint(0,2),
+            "Bargain":ran.randint(0,1),
+            "Type": ran.randint(0,1),
             "Remark":fake.words()
         }
         for i in range(30)
