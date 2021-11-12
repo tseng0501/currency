@@ -1,10 +1,9 @@
 import Page from "./page.js"
 import LocalStorage from '../js/tool/localStorage.js';
-
 $(function () {
     $.ajax({
         async: false,
-        url: "../../config/config.json",
+        url: "../config/config.json",
         success: function (config) {
             if (!JSON.stringify(config)) {
                 console.log('config.json 格式設定有誤！');

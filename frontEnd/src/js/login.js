@@ -191,7 +191,7 @@ Page.user.view = function (r, mode) {
 Page.user.getUserConfig = async function () {
     return await $.ajax({
         async: false,
-        url: '../../config/config_UserNavbar.json',
+        url: '../config/config_UserNavbar.json',
         success: function (data) {
             return data;
         },
@@ -204,7 +204,7 @@ Page.user.getUserConfig = async function () {
 Page.user.getConfig = async function () {
     return await $.ajax({
         async: false,
-        url: '../../config/config_Navbar.json',
+        url: '../config/config_Navbar.json',
         success: function (data) {
             return data;
         },
