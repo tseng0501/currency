@@ -33,12 +33,13 @@ $(function () {
         }
     });
     async function main() {
+        //可直接在config裡控制是否免登入
         let config = new LocalStorage('config');
         config = config.get();
         if (config.ifRemoveCheckToken_ajax) {
             Page.user.getConfigAndDraw();
         } else {
-            Page.user.drawLogin()
+            Page.user.ifToken()
         }
     }
     main()

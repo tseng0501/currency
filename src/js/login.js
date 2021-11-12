@@ -218,3 +218,14 @@ Page.user.getConfigAndDraw = async function () {
     const config = await Page.user.getConfig()
     Page.user.view(config)
 }
+//刷新不會登出
+Page.user.ifToken = function () {
+    const lsUser = new LocalStorage('user');
+    const user = lsUser.get();
+    if(user.token){
+        Page.user.getConfigAndDraw();
+    }
+    else{
+        Page.user.drawLogin()
+    }
+}
