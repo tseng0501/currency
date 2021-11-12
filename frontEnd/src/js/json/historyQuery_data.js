@@ -63,4 +63,8 @@ const HistoryQueryColumns = [
         "name": "備註",
     }
 ];
-export { HistoryDropDown, HistoryQueryColumns }
+const HistoryQueryDateRange = {
+    "titleStart": "開始",
+    "titleEnd": "結束"
+}
+export { HistoryDropDown, HistoryQueryColumns,HistoryQueryDateRange }
