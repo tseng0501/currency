@@ -16,11 +16,11 @@ Page.funds.draw = function (mode, config) {
     Page.funds.drawWalletHtml(mode)
     Page.funds.drawAccountHtml(mode)
     Page.funds.drawHtml(mode)
-    Page.funds.AddWalletBtn()
-    Page.funds.ClaimNumberBtn()
-    Page.funds._getAjax(mode,ls)
-    Page.funds._getAssetAjax(mode,ls)
-    Page.funds._getTableAjax(mode,ls)
+    Page.funds.AddWalletBtn(config)
+    Page.funds.ClaimNumberBtn(config)
+    Page.funds._getAjax(mode, ls)
+    Page.funds._getAssetAjax(mode, ls)
+    Page.funds._getTableAjax(mode, ls)
 }
 
 Page.funds.drawTotalHtml = function () {
@@ -65,7 +65,7 @@ Page.funds.drawAccountHtml = function (mode) {
     }
     this.account = `${account}`
 }
-Page.funds.AddWalletBtn = function () {
+Page.funds.AddWalletBtn = function (config) {
     this.$funds_AddWallet = $("#Funds_AddWallet")
 
     const options = {
@@ -74,11 +74,71 @@ Page.funds.AddWalletBtn = function () {
         width: 150,
         onClick() {
             DevExpress.ui.notify('新增錢包');
+            const $popup = $('<div id="DxPopup-AddWalletinfo" class="addWallet-info"></div>').appendTo('body');
+            $popup.dxPopup({
+                contentTemplate: function () {
+                    return $("<div class='popupContentTemplate'>").append(
+                        $(`<p>請輸入新增錢包數量： <input type="number" id="AddWalletInput" value='' min='1'></p>`),
+                    );
+                },
+                showCloseButton: true,
+                showTitle: true,
+                dragEnabled: true,
+                title: "新增錢包",
+                visible: true,
+                width: 400,
+                height: 200,
+                position: {
+                    at: "center",
+                    my: "center",
+                },
+                toolbarItems: [{
+                    widget: "dxButton",
+                    toolbar: "bottom",
+                    location: "before",
+                    options: {
+                        text: "取消",
+                        onClick: function (e) {
+                            $popup.hide();
+                        }
+                    }
+                }, {
+                    widget: "dxButton",
+                    toolbar: "bottom",
+                    location: "after",
+                    options: {
+                        text: "確定",
+                        onClick: function (e) {
+                            const count = document.querySelector('#AddWalletInput').value
+                            $.ajax({
+                                url: config.server + "/funds/AddWallet",
+                                type: 'PUT',
+                                data: JSON.stringify({ count }),
+                                success: function (r) {
+                                    DevExpress.ui.notify("請求成功", textStatus, 3000);
+                                    dataGrid.refresh()
+                                },
+                                error: function (xhr, textStatus) {
+                                    let message = xhr.responseJSON.message
+                                    DevExpress.ui.notify("請求失敗 " + message, textStatus, 3000);
+                                }
+                            });
+                            $popup.hide();
+                        },
+                    }
+                }],
+                onHidden: function (e) {
+                    e.element.remove();
+                },
+                closeOnOutsideClick: function () {
+                    return $("#DxPopup-AddWalletinfo").get()[0];
+                },
+            });
         },
     }
     this.$addWallet_dxbutton = DrawButton(this.$funds_AddWallet, new DxButtonOptions(options))
 }
-Page.funds.ClaimNumberBtn = function () {
+Page.funds.ClaimNumberBtn = function (config) {
     this.$funds_ClaimNumber = $("#Funds_ClaimNumber")
 
     const options = {
@@ -87,6 +147,66 @@ Page.funds.ClaimNumberBtn = function () {
         width: 150,
         onClick() {
             DevExpress.ui.notify('領取錢包');
+            const $popup = $('<div id="DxPopup-ClaimNumberinfo" class="claimNumber-info"></div>').appendTo('body');
+            $popup.dxPopup({
+                contentTemplate: function () {
+                    return $("<div class='popupContentTemplate'>").append(
+                        $(`<p>請輸入領取錢包數量： <input type="number" id="ClaimNumberInput" value='' min='1'></p>`),
+                    );
+                },
+                showCloseButton: true,
+                showTitle: true,
+                dragEnabled: true,
+                title: "領取錢包",
+                visible: true,
+                width: 400,
+                height: 200,
+                position: {
+                    at: "center",
+                    my: "center",
+                },
+                toolbarItems: [{
+                    widget: "dxButton",
+                    toolbar: "bottom",
+                    location: "before",
+                    options: {
+                        text: "取消",
+                        onClick: function (e) {
+                            $popup.hide();
+                        }
+                    }
+                }, {
+                    widget: "dxButton",
+                    toolbar: "bottom",
+                    location: "after",
+                    options: {
+                        text: "確定",
+                        onClick: function (e) {
+                            const count = document.querySelector('#ClaimNumberInput').value
+                            $.ajax({
+                                url: config.server + "/funds/ClaimNumber",
+                                type: 'PUT',
+                                data: JSON.stringify({ count }),
+                                success: function (r) {
+                                    DevExpress.ui.notify("請求成功", textStatus, 3000);
+                                    dataGrid.refresh()
+                                },
+                                error: function (xhr, textStatus) {
+                                    let message = xhr.responseJSON.message
+                                    DevExpress.ui.notify("請求失敗 " + message, textStatus, 3000);
+                                }
+                            });
+                            $popup.hide();
+                        },
+                    }
+                }],
+                onHidden: function (e) {
+                    e.element.remove();
+                },
+                closeOnOutsideClick: function () {
+                    return $("#DxPopup-ClaimNumberinfo").get()[0];
+                },
+            });
         },
     }
     this.$claimNumber_dxbutton = DrawButton(this.$funds_ClaimNumber, new DxButtonOptions(options))
@@ -114,7 +234,7 @@ Page.funds.drawHtml = function (mode) {
     Page.$panel.html(html);
     this.$panel = this.$panel
 }
-Page.funds._getAjax = function (mode,ls) {
+Page.funds._getAjax = function (mode, ls) {
     let data = {
         id: ls.id,
         mode: mode
@@ -130,7 +250,7 @@ Page.funds._getAjax = function (mode,ls) {
         }
     })
 }
-Page.funds._getAssetAjax = function (mode,ls) {
+Page.funds._getAssetAjax = function (mode, ls) {
     let data = {
         id: ls.id,
         mode: mode
@@ -144,7 +264,7 @@ Page.funds._getAssetAjax = function (mode,ls) {
         }
     })
 }
-Page.funds._getTableAjax = function (mode,ls) {
+Page.funds._getTableAjax = function (mode, ls) {
     let data = {
         id: ls.id,
         mode: mode
@@ -181,7 +301,6 @@ Page.funds.numberInput = function (data) {
     this.$number_dxTextBox = DrawTextBox(this.$funds_number, new DxTextBoxOptions(options))
 }
 Page.funds.assetChart = function (data) {
-    console.log(data, "data")
     const chart = $('#Chart').dxChart({
         palette: 'Harmony Light',
         dataSource: data.OneMonth,
@@ -211,7 +330,7 @@ Page.funds.assetChart = function (data) {
         },
         legend: {
             visible: false,
-          },
+        },
         tooltip: {
             enabled: true,
             customizeTooltip(arg) {
@@ -232,7 +351,6 @@ Page.funds.assetChart = function (data) {
         valueExpr: 'value',
         value: Types[0].value,
         onValueChanged(e) {
-            console.log(e)
             let newData = e.value;
 
             if (newData === 'OneMonth') {
@@ -264,7 +382,6 @@ Page.funds.setColumns = function () {
     }
 }
 Page.funds.drawDataGrid = function (data) {
-    console.log(data)
     const options = {
         dataSource: data,
         columns: this._columns,
@@ -273,6 +390,9 @@ Page.funds.drawDataGrid = function (data) {
             allowDeleting: false,
             allowUpdating: false,
         },
+        paging: {
+            pageSize: 5,
+          },
     }
     DrawDataGrid($('#gridContainer'), new DxDataGridOptions(options))
 }
