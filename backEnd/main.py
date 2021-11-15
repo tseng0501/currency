@@ -196,6 +196,8 @@ async def getData_saleManagement():
             "Turnover":ran.randint(0,100),
             "Bargain":ran.randint(0,1),
             "Type": ran.randint(0,1),
+            "OpenOrClose":ran.randint(0,1),
+            "ProfitOrLoss":ran.randint(-10,100),
             "Remark":fake.words()
         }
         for i in range(30)
@@ -216,8 +218,6 @@ async def getItemData_inventoryList():
                 "A"
                 for i in range(5)
             ],
-            # "BuyAllSellStatus":["買","賣"],
-            # "MoreAllShortStatus":["做多","做空"]
         }
     }
 #endregion /getItemData/historyQuery 
@@ -331,6 +331,7 @@ async def getData_funds_account():
             "ID": i + 1,
             "Date": fake.unix_time(),
             "AddWallet": round(ran.uniform(0, 1000), 2),
+            "ClaimNumber": round(ran.uniform(0, 1000), 2),
             "Balance":round(ran.uniform(0, 1000), 2),
         }
         for i in range(10)

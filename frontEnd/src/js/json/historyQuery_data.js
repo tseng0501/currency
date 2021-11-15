@@ -7,12 +7,12 @@ const HistoryDropDown = [
     {
         "id": 2,
         "value": "買/賣",
-        "name": "BuyAllSellStatus",
+        "name": "BuyOrSellStatus",
     },
     {
         "id": 3,
         "value": "做多/做空",
-        "name": "MoreAllShortStatus",
+        "name": "MoreOrShortStatus",
     }
 ];
 

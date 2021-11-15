@@ -38,12 +38,10 @@ Page.holdMoney.drawTabs = function (mode, config) {
             } else if (tagsId === 1) {
                 Page.holdMoney._getGoodsAjax(mode, config, tagsName)
             }
-            // Page.holdMoney.clear()
         }
     }).dxTabs("instance");
 }
 Page.holdMoney._getGoodsAjax = function (mode, config, tagsName) {
-    console.log(tagsName, "tag")
     const data = {
         mode: mode,
         tags: tagsName === undefined ? 'goods' : tagsName
@@ -78,7 +76,7 @@ Page.holdMoney.setGoodsColumns = function (config, tagsName) {
                 alignment: 'center',
                 dataType: element.dataType,
                 lookup: {
-                    dataSource: MoreAllShort,
+                    dataSource: MoreOrShort,
                     displayExpr: "value",
                     valueExpr: "id"
                 },
@@ -116,7 +114,7 @@ Page.holdMoney.setGoodsColumns = function (config, tagsName) {
                 alignment: 'center',
                 dataType: element.dataType,
                 lookup: {
-                    dataSource: BuyAllSell,
+                    dataSource: BuyOrSell,
                     displayExpr: "value",
                     valueExpr: "id"
                 },
@@ -160,12 +158,6 @@ Page.holdMoney.drawGoodsDataGrid = function (data) {
     this.$dxDataGrid = this.$datagrid.dxDataGrid('instance');
 }
 
-Page.holdMoney.clear = function () {
-    if (this.$dxDataGrid) {
-        this.$dxDataGrid.refresh()
-    }
-    $("#gridContainer").addClass('d-none')
-}
 Page.holdMoney.refresh = function () {
     this.$dxDataGrid.refresh()
 }

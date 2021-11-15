@@ -1,4 +1,4 @@
-const BuyAllSell = [
+const BuyOrSell = [
     {
         "id": 0,
         "value": "買"
@@ -8,7 +8,7 @@ const BuyAllSell = [
     }
 ]
 
-const MoreAllShort = [
+const MoreOrShort = [
     {
         "id": 0,
         "value": "做多"
@@ -17,4 +17,14 @@ const MoreAllShort = [
         "value": "做空"
     }
 ]
-export { BuyAllSell, MoreAllShort }
+
+const OpenOrClose = [
+    {
+        "id": 0,
+        "value": "開"
+    }, {
+        "id": 1,
+        "value": "關"
+    }
+]
+export { BuyOrSell, MoreOrShort ,OpenOrClose}

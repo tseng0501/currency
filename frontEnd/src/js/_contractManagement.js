@@ -2,7 +2,7 @@ import Page from './page.js'
 import { DrawDataGrid, DxDataGridOptions } from './tool/dx/dxDataGrid.js';
 import SendRequest from './tool/dx/sendRequest.js';
 import ContractColumns from './json/contractManagement_data.js';
-import { MoreAllShort ,BuyAllSell} from './json/buyAllSell.js';
+import { MoreOrShort ,BuyOrSell,OpenOrClose} from './json/BuyOrSell.js';
 
 Page.contractManagement = {};
 Page.contractManagement.draw = function (mode, config) {
@@ -39,7 +39,7 @@ Page.contractManagement.setColumns = function (config) {
                 alignment: 'center',
                 dataType: element.dataType,
                 lookup: {
-                    dataSource: MoreAllShort,
+                    dataSource: MoreOrShort,
                     displayExpr: "value",
                     valueExpr: "id"
                 },
@@ -61,7 +61,7 @@ Page.contractManagement.setColumns = function (config) {
                 alignment: 'center',
                 dataType: element.dataType,
                 lookup: {
-                    dataSource: BuyAllSell,
+                    dataSource: BuyOrSell,
                     displayExpr: "value",
                     valueExpr: "id"
                 },
@@ -90,6 +90,37 @@ Page.contractManagement.setColumns = function (config) {
                     valueExpr: "CurrencyID",
                     displayExpr: "CurrencyName"
                 }
+            });
+        }
+        else if (element.id == "OpenOrClose") {
+            this._columns.push({
+                dataField: element.id,
+                caption: element.name,
+                alignment: 'center',
+                dataType: element.dataType,
+                lookup: {
+                    dataSource: OpenOrClose,
+                    displayExpr: "value",
+                    valueExpr: "id"
+                },
+            });
+        }
+        else if (element.id == "ProfitOrLoss") {
+            this._columns.push({
+                dataField: element.id,
+                caption: element.name,
+                alignment: 'center',
+                dataType: element.dataType,
+                cellTemplate: function (element, info) {
+                    if (info.text <=0) {
+                        element.append("<div>" + info.text + "</div>")
+                            .css("color", "red");
+                    } else {
+                        element.append("<div>" + info.text + "</div>")
+                            .css("color", "green");
+                    }
+                }
+              
             });
         }
         else {

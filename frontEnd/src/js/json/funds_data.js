@@ -55,6 +55,11 @@ const FundsCoulumns = [
         "name": "新增錢包",
     },
     {
+        "id": "ClaimNumber",
+        "dataType": 'number',
+        "name": "領取錢包",
+    },
+    {
         "id": "Balance",
         "dataType": 'number',
         "name": "餘額",

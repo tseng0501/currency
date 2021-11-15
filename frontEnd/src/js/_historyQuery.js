@@ -4,7 +4,7 @@ import { DrawDataGrid, DxDataGridOptions } from './tool/dx/dxDataGrid.js';
 import { DrawButton, DxButtonOptions } from './tool/dx/dxButton.js';
 import dateRange from './tool/dx/dxDateBox.js';
 import Ajax from './tool/ajax.js'
-import { BuyAllSell, MoreAllShort } from './json/buyAllSell.js'
+import { BuyOrSell, MoreOrShort } from './json/BuyOrSell.js'
 import { HistoryDropDown, HistoryQueryColumns ,HistoryQueryDateRange} from './json/historyQuery_data.js';
 Page.historyQuery = {};
 Page.historyQuery.draw = function (mode, config) {
@@ -12,8 +12,8 @@ Page.historyQuery.draw = function (mode, config) {
     Page.historyQuery.drawHtml(mode)
     Page.historyQuery.drawDateRange()
     Page.historyQuery._getCurrencyAjax()
-    Page.historyQuery.drawBuyAllSellStatusSelectBox()
-    Page.historyQuery.drawMoreAllShortStatusSelectBox()
+    Page.historyQuery.drawBuyOrSellStatusSelectBox()
+    Page.historyQuery.drawMoreOrShortStatusSelectBox()
     Page.historyQuery.drawSearchButton(mode, config)
 }
 
@@ -51,8 +51,8 @@ Page.historyQuery.drawHtml = function (mode) {
     Page.$panel.html(html);
     this.$panel = this.$panel
     this.$currencyID = $("#HistoryQuery_CurrencyID")
-    this.$buyAllSellStatus = $("#HistoryQuery_BuyAllSellStatus")
-    this.$moreAllShortStatus = $("#HistoryQuery_MoreAllShortStatus")
+    this.$BuyOrSellStatus = $("#HistoryQuery_BuyOrSellStatus")
+    this.$MoreOrShortStatus = $("#HistoryQuery_MoreOrShortStatus")
     this.$gridSearch = $("#gridSearch")
     this.$gridContainer = $("#gridContainer")
     this.$timeContent = $(".timeContent")
@@ -86,21 +86,21 @@ Page.historyQuery.drawCurrencyIDSelectBox = function (data) {
     };
     this.$currencySelectBox = DrawSelectBox(this.$currencyID, new DxSelectBoxOptions(options))
 }
-Page.historyQuery.drawBuyAllSellStatusSelectBox = function () {
+Page.historyQuery.drawBuyOrSellStatusSelectBox = function () {
     const options = {
-        dataSource: BuyAllSell,
+        dataSource: BuyOrSell,
         displayExpr: 'value',
         valueExpr: 'id',
     };
-    this.$buyAllSellStatusSelectBox = DrawSelectBox(this.$buyAllSellStatus, new DxSelectBoxOptions(options))
+    this.$BuyOrSellStatusSelectBox = DrawSelectBox(this.$BuyOrSellStatus, new DxSelectBoxOptions(options))
 }
-Page.historyQuery.drawMoreAllShortStatusSelectBox = function () {
+Page.historyQuery.drawMoreOrShortStatusSelectBox = function () {
     const options = {
-        dataSource: MoreAllShort,
+        dataSource: MoreOrShort,
         displayExpr: 'value',
         valueExpr: 'id',
     };
-    this.$moreAllShortStatusSelectBox = DrawSelectBox(this.$moreAllShortStatus, new DxSelectBoxOptions(options))
+    this.$MoreOrShortStatusSelectBox = DrawSelectBox(this.$MoreOrShortStatus, new DxSelectBoxOptions(options))
 }
 Page.historyQuery.drawSearchButton = function (mode, config) {
     const date = this.dateRange
@@ -110,8 +110,8 @@ Page.historyQuery.drawSearchButton = function (mode, config) {
         type: 'default',
         onClick: function () {
             let Currency = document.querySelector("#HistoryQuery_CurrencyID input").value
-            let BuyAllSell = document.querySelector("#HistoryQuery_BuyAllSellStatus input").value
-            let MoreAllShort = document.querySelector("#HistoryQuery_MoreAllShortStatus input").value
+            let BuyOrSell = document.querySelector("#HistoryQuery_BuyOrSellStatus input").value
+            let MoreOrShort = document.querySelector("#HistoryQuery_MoreOrShortStatus input").value
             let dateRange = date.get()
 
             if (!dateRange) {
@@ -122,14 +122,13 @@ Page.historyQuery.drawSearchButton = function (mode, config) {
             let data = {
                 data: {
                     CurrencyID: Currency ? Currency : null,
-                    BuyAllSellStatus: BuyAllSell ? BuyAllSell : null,
-                    MoreAllShortStatus: MoreAllShort ? MoreAllShort : null,
+                    BuyOrSellStatus: BuyOrSell ? BuyOrSell : null,
+                    MoreOrShortStatus: MoreOrShort ? MoreOrShort : null,
                     dateRange: dateRange
 
                 },
                 mode: mode
             }
-            console.log(data,"data")
             Ajax({
                 customizedUrl: '/getData/historyQuery',
                 data: data,
@@ -157,7 +156,7 @@ Page.historyQuery.setColumns = function (config) {
                 alignment: 'center',
                 dataType: element.dataType,
                 lookup: {
-                    dataSource: MoreAllShort,
+                    dataSource: MoreOrShort,
                     displayExpr: "value",
                     valueExpr: "id"
                 },
@@ -195,7 +194,7 @@ Page.historyQuery.setColumns = function (config) {
                 alignment: 'center',
                 dataType: element.dataType,
                 lookup: {
-                    dataSource: BuyAllSell,
+                    dataSource: BuyOrSell,
                     displayExpr: "value",
                     valueExpr: "id"
                 },
