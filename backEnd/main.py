@@ -112,6 +112,7 @@ async def getData_accountManagement():
         "data":[{
             "ID": i + 1,
             "User": fake.name_male(),
+            "Account": fake.ssn(),
             "Password": fake.word(),
             "Authority": ran.randint(1,2),
             "Enable": ran.randint(0,1)
@@ -275,7 +276,7 @@ async def getData_funds_account():
         "status":True,
         "data":{
             "User": fake.name_female(),
-            "Number": fake.ssn(),
+            "Account": fake.ssn(),
             "Total":round(ran.uniform(0, 10000), 8),
             "Type":"USDT",
         }

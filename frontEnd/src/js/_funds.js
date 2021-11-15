@@ -245,7 +245,7 @@ Page.funds._getAjax = function (mode, ls) {
         success: function (r) {
 
             Page.funds.userInput(r.User)
-            Page.funds.numberInput(r.Number)
+            Page.funds.accountInput(r.Account)
             Page.funds.totalText(r)
         }
     })
@@ -291,14 +291,14 @@ Page.funds.userInput = function (data) {
     }
     this.$user_dxTextBox = DrawTextBox(this.$funds_user, new DxTextBoxOptions(options))
 }
-Page.funds.numberInput = function (data) {
-    this.$funds_number = $("#Funds_number")
+Page.funds.accountInput = function (data) {
+    this.$funds_account = $("#Funds_account")
 
     const options = {
         value: data,
         disabled: true,
     }
-    this.$number_dxTextBox = DrawTextBox(this.$funds_number, new DxTextBoxOptions(options))
+    this.$account_dxTextBox = DrawTextBox(this.$funds_account, new DxTextBoxOptions(options))
 }
 Page.funds.assetChart = function (data) {
     const chart = $('#Chart').dxChart({
@@ -392,7 +392,8 @@ Page.funds.drawDataGrid = function (data) {
         },
         paging: {
             pageSize: 5,
-          },
+        },
+        showColumnLines: false
     }
     DrawDataGrid($('#gridContainer'), new DxDataGridOptions(options))
 }

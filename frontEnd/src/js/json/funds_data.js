@@ -5,7 +5,7 @@ const AccountList = [{
 }, {
     id: 2,
     value: '帳號',
-    name: "number"
+    name: "account"
 
 }]
 
