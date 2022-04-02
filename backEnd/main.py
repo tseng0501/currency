@@ -112,7 +112,7 @@ async def getData_accountManagement():
         "data":[{
             "ID": i + 1,
             "User": fake.name_male(),
-            "Password": fake.word(),
+            "Password": fake.ssn(),
             "Authority": ran.randint(1,2),
             "Enable": ran.randint(0,1)
         }
