@@ -3,7 +3,7 @@ import LocalStorage from '../js/tool/localStorage.js';
 
 Page.pageDrawer = {};
 Page.pageDrawer.oldId = null
-Page.pageDrawer.draw = function (r, user) {
+Page.pageDrawer.draw = function(r, user) {
     let data = r
     let config = new LocalStorage('config');
     config = config.get();
@@ -18,7 +18,7 @@ Page.pageDrawer.draw = function (r, user) {
             newItem.items = x.items;
             newItem.url = x.url;
 
-            newItem.items?.map((historyItem) => {
+            newItem.items ?.map((historyItem) => {
                 const newhistoryItem = {}
 
                 if (historyItem.enable == true) {
@@ -35,57 +35,69 @@ Page.pageDrawer.draw = function (r, user) {
     })
     var newData = data.filter(value => Object.keys(value).length !== 0).map((group) => {
 
-        return { ...group, items: group.items?.filter(value => value.enable) }
+        return {...group, items: group.items ?.filter(value => value.enable) }
     })
 
     $("#Menu").dxMenu({
         dataSource: newData,
-        onItemClick: function (data) {
+        onItemClick: function(data) {
             Page.pageDrawer.resetMainContentHtml();
             Page.pageDrawer.currentPage(data)
             const mode = data.itemData.mode;
-
-            switch (mode) {
-                case 'AccountManagement':
-                    Page.accountManagement.draw(mode,config);
-                    break;
-                case 'CurrencyManagement':
-                    Page.currencyManagement.draw(mode, config);
-                    break;
-                case 'SpotGoodsManagement':
-                    Page.spotGoodsManagement.draw(mode, config);
-                    break;
-                case 'ContractManagement':
-                    Page.contractManagement.draw(mode, config);
-                    break;
-                case 'HistoryQuery':
-                    Page.historyQuery.draw(mode, config);
-                    break;
-                case 'HoldMoney':
-                    Page.holdMoney.draw(mode, config);
-                    break;
-                case 'Funds':
-                    Page.funds.draw(mode, config);
-                    break;
-                default:
-            }
+            Page.pageDrawer.swicthPage(mode, config)
             Page.pageDrawer.oldId = data.itemData.mode
         }
     }).dxMenu("instance");
-    let firstMode = newData[0].mode;
-    if (user == "view") {
-        Page.spotGoodsManagement.draw("SpotGoodsManagement", config)
+    Page.pageDrawer.frontPage(newData,config)
+}
+Page.pageDrawer.frontPage = function(newData,config) {
+    let first_mode = newData[0].mode;
 
-    } else {
-        Page.accountManagement.draw(firstMode,config)
+    Page.pageDrawer.swicthPage(first_mode, config)
+        //第一個導覽列標籤(白底黑字)
+    $('#Menu > div > ul > li:nth-child(1)').find('.dx-menu-item').css('background-color', 'transparent');
+    $('#Menu > div > ul > li:nth-child(1)').find('.dx-menu-item').css('color', 'black');
+    $('#Menu > div > ul > li:nth-child(1)').css('background-color', 'wheat');
+    $('#Menu > div > ul > li:nth-child(1)').css('color', 'black');
+    $('#Menu > div > ul > li:nth-child(1)').css('border-radius', '.5rem');
+}
+Page.pageDrawer.swicthPage = function(mode,config) {
+    switch (mode) {
+        case 'AccountManagement':
+            Page.accountManagement.draw(mode, config);
+            break;
+        case 'CurrencyManagement':
+            Page.currencyManagement.draw(mode, config);
+            break;
+        case 'SpotGoodsManagement':
+            Page.spotGoodsManagement.draw(mode, config);
+            break;
+        case 'ContractManagement':
+            Page.contractManagement.draw(mode, config);
+            break;
+        case 'HistoryQuery':
+            Page.historyQuery.draw(mode, config);
+            break;
+        case 'HoldMoney':
+            Page.holdMoney.draw(mode, config);
+            break;
+        case 'Funds':
+            Page.funds.draw(mode, config);
+            break;
+        default:
     }
 }
-Page.pageDrawer.resetMainContentHtml = function () {
+Page.pageDrawer.resetMainContentHtml = function() {
     Page.clear();
 }
-Page.pageDrawer.currentPage = function (data) {
+Page.pageDrawer.currentPage = function(data) {
+    //當前頁面 - 導覽列標籤(顔色，背景)
+    $('#Menu > div > ul > li:nth-child(1)').css('background-color', 'transparent');
+    $('#Menu > div > ul > li:nth-child(1)').css('color', 'black');
     //當前頁面
-    data.element.find('.dx-menu-item').css('background-color', 'transparent');  
-    data.itemElement.closest('.dx-menu-item').css('background-color', 'wheat');  
-    data.itemElement.closest('.dx-menu-item').css('border-radius', '.5rem'); 
+    data.element.find('.dx-menu-item').css('background-color', 'transparent');
+    data.element.find('.dx-menu-item').css('color', 'black');
+    data.itemElement.closest('.dx-menu-item').css('background-color', 'wheat');
+    data.itemElement.closest('.dx-menu-item').css('color', 'black');
+    data.itemElement.closest('.dx-menu-item').css('border-radius', '.5rem');
 }
