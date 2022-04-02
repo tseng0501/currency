@@ -2,7 +2,7 @@ import Page from './page.js'
 import { DrawDataGrid, DxDataGridOptions } from './tool/dx/dxDataGrid.js';
 import SendRequest from './tool/dx/sendRequest.js';
 import SpotGoodsColumns from './json/spotGoodsManagement_data.js';
-import {BuyAllSell} from './json/buyAllSell.js';
+import {BuyOrSell} from './json/BuyOrSell.js';
 
 Page.spotGoodsManagement = {};
 Page.spotGoodsManagement.draw = function (mode, config) {
@@ -38,7 +38,7 @@ Page.spotGoodsManagement.setColumns = function (config) {
                 alignment: 'center',
                 dataType: element.dataType,
                 lookup: {
-                    dataSource: BuyAllSell,
+                    dataSource: BuyOrSell,
                     displayExpr: "value",
                     valueExpr: "id"
                 },

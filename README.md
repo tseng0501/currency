@@ -13,3 +13,6 @@ frontEnd 資料夾是前端
 - 我的資金
 - 登入/登出
 
+首頁
+
+<img src="/frontEnd/src/img/page1.jpeg" width="973" height="557"/>

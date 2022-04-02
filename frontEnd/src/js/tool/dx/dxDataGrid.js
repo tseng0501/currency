@@ -72,6 +72,8 @@ class DxDataGridOptions {
      * @param {Boolean} options.columnChooser.enabled           是否可以打開列選擇器
      * @param {String} options.columnChooser.mode               如何使用列選擇器管理列   'dragAndDrop' | 'select'
      * @param {String} options.columnChooser.title              指定列選擇器的標題
+     * @param {Boolean} options.showColumnLines                 表格是否有內網格
+     * 
      *                    
      *                  
      */
@@ -183,6 +185,7 @@ class DxDataGridOptions {
             mode: (options.columnChooser.mode || 'select'),
             title: (options.columnChooser.title || '顯示欄位'),
         }
+        this.showColumnLines = (options.showColumnLines === undefined ? true : false);
     }
 }
 
@@ -197,6 +200,7 @@ function DrawDataGrid($panel, options) {
 
         return false;
     }
+
     $panel.dxDataGrid({
         allowColumnResizing: true,
         hoverStateEnabled: true,
@@ -326,14 +330,15 @@ function DrawDataGrid($panel, options) {
                 summaryType: options.summary.totalItems.summaryType,
             }]
         },
-        export:{
-            enabled:options.export.enabled
+        export: {
+            enabled: options.export.enabled
         },
-        columnChooser:{
-            enabled:options.columnChooser.enabled,
-            mode:options.columnChooser.mode,
-            title:options.columnChooser.title,
-        }
+        columnChooser: {
+            enabled: options.columnChooser.enabled,
+            mode: options.columnChooser.mode,
+            title: options.columnChooser.title,
+        },
+        showColumnLines: options.showColumnLines
     });
     return $panel;
 }

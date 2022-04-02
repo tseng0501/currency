@@ -77,6 +77,16 @@ class dateRange {
         let second = this.getTimeValue(this.end);
         let now = moment().startOf('day').valueOf();
 
+        var getFirstValue = new Date(first)
+        let getFirstMonth = getFirstValue.getMonth() + 1
+
+        var getEndValue = new Date(second)
+        let getEndMonth = getEndValue.getMonth() + 1
+
+        if(getEndMonth - getFirstMonth > 3){
+            DevExpress.ui.notify("時間間隔不能大於3個月", "warning", 2000);
+            return false;
+        }
         if (first === second) {
             DevExpress.ui.notify("請選擇正確的時間範圍！", "warning", 2000);
             return false;
@@ -93,6 +103,7 @@ class dateRange {
             DevExpress.ui.notify("超過目前時間！", "warning", 2000);
             return false;
         }
+
         return {
             start: first,
             end: second,

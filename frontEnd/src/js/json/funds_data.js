@@ -5,7 +5,7 @@ const AccountList = [{
 }, {
     id: 2,
     value: '帳號',
-    name: "number"
+    name: "account"
 
 }]
 
@@ -53,6 +53,11 @@ const FundsCoulumns = [
         "id": "AddWallet",
         "dataType": 'number',
         "name": "新增錢包",
+    },
+    {
+        "id": "ClaimNumber",
+        "dataType": 'number',
+        "name": "領取錢包",
     },
     {
         "id": "Balance",

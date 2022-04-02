@@ -23,9 +23,12 @@ const AccountColumns = [
         "name": "No",
         "allowEditing": false
     }, {
-        "id": "User",
+        "id": "Account",
         "name": "帳號",
     }, {
+        "id": "User",
+        "name": "使用者",
+    },  {
         "id": "Password",
         "name": "密碼",
     }, {

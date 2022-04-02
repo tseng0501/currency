@@ -40,6 +40,16 @@ const ContractColumns = [
         "name": "做多/做空",
     },
     {
+        "id": "OpenOrClose",
+        "dataType": 'number',
+        "name": "開/關",
+    },
+    {
+        "id": "ProfitOrLoss",
+        "dataType": 'number',
+        "name": "盈虧",
+    },
+    {
         "id": "Remark",
         "dataType": 'string',
         "name": "備註",

@@ -7,12 +7,12 @@ const HistoryDropDown = [
     {
         "id": 2,
         "value": "買/賣",
-        "name": "BuyAllSellStatus",
+        "name": "BuyOrSellStatus",
     },
     {
         "id": 3,
         "value": "做多/做空",
-        "name": "MoreAllShortStatus",
+        "name": "MoreOrShortStatus",
     }
 ];
 
@@ -63,4 +63,8 @@ const HistoryQueryColumns = [
         "name": "備註",
     }
 ];
-export { HistoryDropDown, HistoryQueryColumns }
+const HistoryQueryDateRange = {
+    "titleStart": "開始",
+    "titleEnd": "結束"
+}
+export { HistoryDropDown, HistoryQueryColumns,HistoryQueryDateRange }
