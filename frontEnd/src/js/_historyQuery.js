@@ -23,8 +23,8 @@ Page.historyQuery.drawDropDownListHtml = function (mode) {
     for (let i = 0; i < HistoryDropDown.length; i++) {
         const element = HistoryDropDown[i];
         maindropdownhtml += `
-        <div class="input-group">
-            <div class="input-group-textselect">${element.value}</div>
+        <div class="dx-field">
+            <div class="dx-field-label">${element.value}</div>
             <div class="dx-field-value">
                 <div id="${mode}_${element.name}"></div>
             </div>

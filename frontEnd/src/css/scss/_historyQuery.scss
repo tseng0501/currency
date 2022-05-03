@@ -1,23 +1,35 @@
 #HistoryQuery {
     #HistoryQueryFilter {
         padding: 0.5rem;
-        .input-group {
+        display: flex;
+        flex-wrap: wrap;
+
+        .dx-field {
             display: flex;
-            justify-content: space-between;
-            margin: 0.5rem 0;
-            .input-group-textselect {
-                margin: auto 0 auto 0.5rem;
-            }
+            width: 30%;
+            margin-right: 1rem;
+            // justify-content: space-between;
+            // margin: 0.5rem 0;
+            // .input-group-textselect {
+            //     margin: auto 0 auto 0.5rem;
+            // }
         }
+
         .timeContent {
+            display: flex;
+
             .time_Box {
+                width: 50%;
                 display: flex;
+                margin-right: 1rem;
                 justify-content: space-between;
+
                 .time_title {
-                    margin: auto 0 auto 0.5rem;
+                    margin: auto 1rem auto 0.5rem;
                 }
             }
         }
+
         .inventoryblock {
             text-align: center;
             margin-top: 0.5rem;
@@ -25,30 +37,34 @@
     }
 }
 
-@media (min-width: 992px) {
+@media (max-width: 400px) {
     #HistoryQuery {
         #HistoryQueryFilter {
-            display: flex;
-            flex-wrap: wrap;
-            width: 100%;
-            .input-group {
-                margin-right: 0.5rem;
-                width: calc(96% / 5);
-                margin: auto;
+
+            // display: block;
+            .dx-field {
+                width: 100%;
+                margin-right: 0;
             }
-            .timeContent{
-                display: flex;
-                .time_Box{
-                    .time_title{
-                        margin-right: .5rem;
-                    }
+
+            .timeContent {
+                display: block;
+                width: 100%;
+
+                .time_Box {
+                    width: 100%;
                 }
             }
+
             .inventoryblock {
                 margin: auto;
-                margin-left: 1rem;
+                margin-top: 0.5rem;
+                #gridSearch {
+                    width: 100%;
+                }
             }
         }
+
         #HistoryQueryPanel {
             margin-top: 1.5rem;
         }
